@@ -1,0 +1,44 @@
+# Site information.
+site:
+  name: Site name
+  mail: info@example.org
+  profile: standard
+  update: false
+  locale: en
+
+modules:
+  - composer_autoloader
+  - nexteuropa_poetry
+
+# Administrator account.
+account:
+  name: admin
+  password: admin
+  mail: admin@example.org
+
+# Database parameters.
+database:
+  host: 127.0.0.1
+  port: 3306
+  name: drupal
+  user: root
+  password: ''
+  prefix: ''
+
+# Drush configuration
+drush:
+  options:
+    exclude: build
+
+# Drupal configuration
+settings:
+  conf:
+    file_scan_ignore_directories:
+      - node_modules
+      - bower_components
+      - build
+      - vendor
+
+# Binary location.
+bin:
+  drush: ./vendor/bin/drush
