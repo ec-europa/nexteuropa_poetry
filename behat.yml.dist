@@ -19,5 +19,9 @@ default:
       api_driver: 'drupal'
       drupal:
         drupal_root: 'build'
+    EC\Behat\PoetryExtension:
+      application:
+        base_url: http://127.0.0.1:8888
+        endpoint: '/endpoint'
   formatters:
     progress: ~
