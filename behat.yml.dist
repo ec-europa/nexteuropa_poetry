@@ -7,8 +7,6 @@ default:
         - '%paths.base%/tests/features'
       contexts:
         - 'Drupal\DrupalExtension\Context\MinkContext'
-        - 'Drupal\DrupalExtension\Context\MarkupContext'
-        - 'Drupal\DrupalExtension\Context\MessageContext'
         - 'Drupal\DrupalExtension\Context\DrupalContext'
         - 'FeatureContext'
   extensions:
