@@ -10,11 +10,17 @@ env:
 install:
   - composer self-update
   - composer install
+  - phantomjs --webdriver=4444 > /dev/null &
+
+before_script:
   - robo project:setup
   - robo project:install
+  - drush --root=$PWD/build --debug runserver :8888 > ~/debug.txt 2>&1 &
+  - sleep 4s
 
 script:
   - grumphp run
+  - behat
 
 notifications:
   email: false
