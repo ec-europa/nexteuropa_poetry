@@ -1,7 +1,0 @@
-imports:
-    - ./behat.yml.dist
-default:
-  extensions:
-    Behat\MinkExtension:
-      base_url: http://localhost/nexteuropa_poetry/build/
-
