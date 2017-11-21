@@ -39,10 +39,17 @@ class RoboFile extends Tasks {
     $this->getInstallTask()
       ->siteInstall($this->config('site.profile'))
       ->run();
-    $modules_list = implode(' ', $this->config('modules'));
+
+    $modules_list = implode(' ', $this->config('modules.enable'));
     $this->taskDrushStack($this->config('bin.drush'))
       ->drupalRootDirectory($this->root() . '/build')
       ->drush('en ' . $modules_list)
+      ->run();
+
+    $modules_list = implode(' ', $this->config('modules.disable'));
+    $this->taskDrushStack($this->config('bin.drush'))
+      ->drupalRootDirectory($this->root() . '/build')
+      ->drush('dis ' . $modules_list)
       ->run();
   }
 

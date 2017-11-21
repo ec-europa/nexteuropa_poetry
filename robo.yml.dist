@@ -7,8 +7,12 @@ site:
   locale: en
 
 modules:
-  - composer_autoloader
-  - nexteuropa_poetry
+  enable:
+    - composer_autoloader
+    - nexteuropa_poetry
+  disable:
+    - overlay
+    - update
 
 # Administrator account.
 account:
