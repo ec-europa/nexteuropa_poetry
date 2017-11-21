@@ -15,7 +15,7 @@ install:
 before_script:
   - robo project:setup
   - robo project:install
-  - drush --root=$PWD/build --debug runserver :8888 > ~/debug.txt 2>&1 &
+  - drush --root=$PWD/build --debug runserver :80 > ~/debug.txt 2>&1 &
   - sleep 4s
 
 script:
