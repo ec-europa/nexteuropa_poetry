@@ -25,8 +25,5 @@ default:
       application:
         base_url: http://127.0.0.1:8888
         endpoint: '/poetry/notification'
-      service:
-        host: 127.0.0.1
-        port: 8889
   formatters:
     progress: ~

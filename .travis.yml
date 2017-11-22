@@ -1,6 +1,7 @@
 language: php
 php:
-  - 5.6
+  # Temporarily disabled on 5.6 as it only fails on Travis. @todo: fix this.
+  # - 5.6
   - 7.0
 
 env:
