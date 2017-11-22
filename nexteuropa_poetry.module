@@ -5,6 +5,10 @@
  * Module file.
  */
 
+use EC\Poetry\Poetry;
+use drupol\drupal7_psr3_watchdog\Logger\WatchdogLogger;
+use Drupal\nexteuropa_poetry\NotificationSubscriber;
+
 /**
  * Implements hook_menu().
  */
@@ -18,7 +22,43 @@ function nexteuropa_poetry_menu() {
     'weight' => 100,
     'file' => 'includes/nexteuropa_poetry.admin.inc',
   );
+
+  // Access restriction is handled on the soap callback.
+  $items['poetry/notification'] = array(
+    'page callback' => 'nexteuropa_poetry_notification_callback',
+    'access callback' => TRUE,
+  );
+
+  // Access restriction is handled on the soap callback.
+  $items['poetry/wsdl'] = array(
+    'page callback' => 'nexteuropa_poetry_wsdl_callback',
+    'access callback' => TRUE,
+  );
   return $items;
+}
+
+/**
+ * Poetry client factory.
+ *
+ * @return \EC\Poetry\Poetry
+ *   Poetry client object.
+ */
+function nexteuropa_poetry_client() {
+  $options = array(
+    'absolute' => TRUE,
+    'language' => (object) array('language' => FALSE),
+  );
+
+  return new Poetry([
+    'notification.username' => variable_get('nexteuropa_poetry_notification_username', ''),
+    'notification.password' => variable_get('nexteuropa_poetry_notification_password', ''),
+    'service.username'      => variable_get('nexteuropa_poetry_service_username', ''),
+    'service.password'      => variable_get('nexteuropa_poetry_service_password', ''),
+    'notification.endpoint' => url("poetry/notification", $options),
+    'client.wsdl'           => url("poetry/wsdl", $options),
+    'logger'                => new WatchdogLogger('nexteuropa_poetry'),
+    'log_level'             => variable_get('nexteuropa_poetry_log_level', FALSE),
+  ]);
 }
 
 /**
@@ -31,4 +71,24 @@ function nexteuropa_poetry_permission() {
       'description' => t('Configure Poetry client global settings.'),
     ),
   );
+}
+
+/**
+ * Callback for requests/responses sent by the DGT Services (Poetry).
+ */
+function nexteuropa_poetry_notification_callback() {
+  $poetry = nexteuropa_poetry_client();
+  $poetry->getEventDispatcher()->addSubscriber(new NotificationSubscriber());
+  $poetry->getServer()->handle();
+  drupal_exit();
+}
+
+/**
+ * Callback for exposing WSDL configuration.
+ */
+function nexteuropa_poetry_wsdl_callback() {
+  $wsdl = nexteuropa_poetry_client()->getWsdl();
+  $wsdl->sendHeaders();
+  print $wsdl->getXml();
+  drupal_exit();
 }

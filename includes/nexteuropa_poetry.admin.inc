@@ -5,6 +5,8 @@
  * Administration form.
  */
 
+use Psr\Log\LogLevel;
+
 /**
  * Form callback.
  *
@@ -50,6 +52,29 @@ function nexteuropa_poetry_client_settings_form() {
     '#required' => TRUE,
     '#default_value' => variable_get('nexteuropa_poetry_notification_password', ''),
     '#description' => t('Drupal notification callback password, Poetry remote service will use it to authenticate against it.'),
+  );
+
+  $form['logger'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Logger settings'),
+  );
+  $form['logger']['nexteuropa_poetry_log_level'] = array(
+    '#title' => t('Username'),
+    '#type' => 'select',
+    '#required' => TRUE,
+    '#options' => array(
+      'none'              => t('Do not log anything'),
+      LogLevel::DEBUG     => t('Debug'),
+      LogLevel::INFO      => t('Info'),
+      LogLevel::NOTICE    => t('Notice'),
+      LogLevel::WARNING   => t('Warning'),
+      LogLevel::ERROR     => t('Error'),
+      LogLevel::CRITICAL  => t('Critical'),
+      LogLevel::ALERT     => t('Alert'),
+      LogLevel::EMERGENCY => t('Emergency'),
+    ),
+    '#default_value' => variable_get('nexteuropa_poetry_log_level', 'none'),
+    '#description' => t('Log from the selected level up, sorted by severity.'),
   );
 
   return system_settings_form($form);
