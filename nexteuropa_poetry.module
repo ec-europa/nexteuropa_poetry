@@ -4,3 +4,31 @@
  * @file
  * Module file.
  */
+
+/**
+ * Implements hook_menu().
+ */
+function nexteuropa_poetry_menu() {
+  $items['admin/config/regional/poetry-client'] = array(
+    'title' => 'Poetry client',
+    'description' => "Settings for Poetry client integration.",
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('nexteuropa_poetry_client_settings_form'),
+    'access arguments' => array('configure poetry client'),
+    'weight' => 100,
+    'file' => 'includes/nexteuropa_poetry.admin.inc',
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function nexteuropa_poetry_permission() {
+  return array(
+    'configure poetry client' => array(
+      'title' => t('Configure Poetry client'),
+      'description' => t('Configure Poetry client global settings.'),
+    ),
+  );
+}
