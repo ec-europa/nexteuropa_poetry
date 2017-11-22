@@ -77,7 +77,9 @@ function nexteuropa_poetry_permission() {
 }
 
 /**
- * Callback for requests/responses sent by the DGT Services (Poetry).
+ * Notification callback.
+ *
+ * @see nexteuropa_poetry_menu()
  */
 function nexteuropa_poetry_notification_callback() {
   $poetry = nexteuropa_poetry_client();
@@ -87,7 +89,9 @@ function nexteuropa_poetry_notification_callback() {
 }
 
 /**
- * Callback for exposing WSDL configuration.
+ * WSDL callback.
+ *
+ * @see nexteuropa_poetry_menu()
  */
 function nexteuropa_poetry_wsdl_callback() {
   $wsdl = nexteuropa_poetry_client()->getWsdl();
