@@ -8,6 +8,8 @@ default:
       contexts:
         - 'Drupal\DrupalExtension\Context\MinkContext'
         - 'Drupal\DrupalExtension\Context\DrupalContext'
+        - 'EC\Behat\PoetryExtension\Context\PoetryContext'
+        - 'VariableContext'
         - 'FeatureContext'
   extensions:
     Behat\MinkExtension:
@@ -22,6 +24,6 @@ default:
     EC\Behat\PoetryExtension:
       application:
         base_url: http://127.0.0.1:8888
-        endpoint: '/endpoint'
+        endpoint: '/poetry/notification'
   formatters:
     progress: ~

@@ -10,6 +10,7 @@ modules:
   enable:
     - composer_autoloader
     - nexteuropa_poetry
+    - nexteuropa_poetry_test
   disable:
     - overlay
     - update

@@ -5,8 +5,6 @@ namespace Drupal\nexteuropa_poetry;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use EC\Poetry\Events\Notifications\TranslationReceivedEvent;
 use EC\Poetry\Events\Notifications\StatusUpdatedEvent;
-use EC\Poetry\Messages\Notifications\TranslationReceived;
-use EC\Poetry\Messages\Notifications\StatusUpdated;
 
 /**
  * Class NotificationSubscriber.
@@ -19,30 +17,30 @@ class NotificationSubscriber implements EventSubscriberInterface {
    * {@inheritdoc}
    */
   public static function getSubscribedEvents() {
-    return [
+    return array(
       TranslationReceivedEvent::NAME => 'onTranslationReceivedEvent',
       StatusUpdatedEvent::NAME       => 'onStatusUpdatedEvent',
-    ];
+    );
   }
 
   /**
-   * Event handler.
+   * Notification handler.
    *
-   * @param \EC\Poetry\Messages\Notifications\TranslationReceived $message
-   *   Message object.
+   * @param \EC\Poetry\Events\Notifications\TranslationReceivedEvent $event
+   *   Event object.
    */
-  public function onTranslationReceivedEvent(TranslationReceived $message) {
-    module_invoke_all('nexteuropa_poetry_notification_translation_received', $message);
+  public function onTranslationReceivedEvent(TranslationReceivedEvent $event) {
+    module_invoke_all('nexteuropa_poetry_notification_translation_received', $event->getMessage());
   }
 
   /**
-   * Event handler.
+   * Notification handler.
    *
-   * @param \EC\Poetry\Messages\Notifications\StatusUpdated $message
-   *   Message object.
+   * @param \EC\Poetry\Events\Notifications\StatusUpdatedEvent $event
+   *   Event object.
    */
-  public function onStatusUpdatedEvent(StatusUpdated $message) {
-    module_invoke_all('nexteuropa_poetry_notification_status_updated', $message);
+  public function onStatusUpdatedEvent(StatusUpdatedEvent $event) {
+    module_invoke_all('nexteuropa_poetry_notification_status_updated', $event->getMessage());
   }
 
 }

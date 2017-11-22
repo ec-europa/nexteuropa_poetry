@@ -5,3 +5,5 @@ package = NextEuropa
 configure = admin/config/regional/poetry-client
 
 dependencies[] = registry_autoload
+
+registry_autoload[] = PSR-4
