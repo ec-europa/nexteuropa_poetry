@@ -23,16 +23,39 @@ class FeatureContext extends RawDrupalContext {
    *
    * @When the following message should be in the watchdog :message
    */
-  public function assertWatchdogMessage($message) {
-    $result = db_select('watchdog', 'w')
+  public function assertWatchdogMessagePresence($message) {
+    if ($this->countWatchdogMessageOccurrences($message) === 0) {
+      throw new \Exception("Message '{$message}' not found in Watchdog.");
+    }
+  }
+
+  /**
+   * Assert message not in Watchdog.
+   *
+   * @When the following message should not be in the watchdog :message
+   */
+  public function assertWatchdogMessageAbsence($message) {
+    if ($this->countWatchdogMessageOccurrences($message) > 0) {
+      throw new \Exception("Message '{$message}' found in Watchdog.");
+    }
+  }
+
+  /**
+   * Count number of message occurrences in watchdog.
+   *
+   * @param string $message
+   *   Message.
+   *
+   * @return int
+   *   Occurrences.
+   */
+  protected function countWatchdogMessageOccurrences($message) {
+    return (int) db_select('watchdog', 'w')
       ->fields('w')
       ->condition('message', $message)
       ->countQuery()
       ->execute()
       ->fetchField();
-    if ($result == 0) {
-      throw new \Exception("Message '{$message}' not found in Watchdog.");
-    }
   }
 
 }

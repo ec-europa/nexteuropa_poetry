@@ -49,6 +49,9 @@ function nexteuropa_poetry_client() {
     'language' => (object) array('language' => FALSE),
   );
 
+  $log_level = variable_get('nexteuropa_poetry_log_level', 'none');
+  $log_level = ($log_level === 'none') ? FALSE : $log_level;
+
   return new Poetry([
     'notification.username' => variable_get('nexteuropa_poetry_notification_username', ''),
     'notification.password' => variable_get('nexteuropa_poetry_notification_password', ''),
@@ -57,7 +60,7 @@ function nexteuropa_poetry_client() {
     'notification.endpoint' => url("poetry/notification", $options),
     'client.wsdl'           => url("poetry/wsdl", $options),
     'logger'                => new WatchdogLogger('nexteuropa_poetry'),
-    'log_level'             => variable_get('nexteuropa_poetry_log_level', FALSE),
+    'log_level'             => $log_level,
   ]);
 }
 
