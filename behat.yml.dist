@@ -16,14 +16,14 @@ default:
       goutte: ~
       selenium2: ~
       javascript_session: selenium2
-      base_url: %BASE_URL%
+      base_url: !site.base_url
     Drupal\DrupalExtension:
       api_driver: 'drupal'
       drupal:
-        drupal_root: %DRUPAL_ROOT%
+        drupal_root: !site.root
     EC\Behat\PoetryExtension:
       application:
-        base_url: %BASE_URL%
+        base_url: !site.base_url
         endpoint: '/poetry/notification'
   formatters:
     progress: ~
