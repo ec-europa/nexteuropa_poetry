@@ -16,7 +16,7 @@ This will download all development dependencies and build a Drupal 7 target site
 After that:
 
 1. Copy `robo.yml.dist` into `robo.yml` and customise relevant parameters.
-2. Run `./vendor/bin/robo project:install` to install the project having the Search API Europa Search module enabled.
+2. Run `./vendor/bin/robo project:install` to install the project having the NextEuropa Poetry module enabled.
 
 To have a complete list of building options run:
 
