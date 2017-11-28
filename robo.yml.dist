@@ -5,6 +5,8 @@ site:
   profile: standard
   update: false
   locale: en
+  base_url: http://127.0.0.1:8888
+  root: build
 
 modules:
   enable:

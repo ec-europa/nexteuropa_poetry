@@ -25,7 +25,6 @@
     "webmozart/path-util": "^2.3",
     "mikey179/vfsstream": "~1.2",
     "nuvoleweb/robo-config": "~0.1",
-    "boedah/robo-drush": "~3",
     "drupal/drupal-extension": "~3.0"
   },
   "repositories": [
@@ -34,6 +33,10 @@
       "url": "https://packages.drupal.org/7"
     }
   ],
+  "scripts": {
+    "post-update-cmd": "./vendor/bin/robo project:setup",
+    "post-install-cmd": "./vendor/bin/robo project:setup"
+  },
   "extra": {
     "patches": {
       "drupal/drupal": {

@@ -4,14 +4,22 @@
 
 ## Development setup
 
+Run:
+
+```
+$ composer install
+```
+
+This will download all development dependencies and build a Drupal 7 target site under `./build` and run
+`./vendor/bin/robo project:setup` to setup proper symlink and produce necessary scaffolding files.
+
+After that:
+
 1. Copy `robo.yml.dist` into `robo.yml` and customise relevant parameters.
-2. Copy `behat.yml.dist` into `behat.yml` and customise relevant parameters.
-3. Run `composer install` 
-4. Run `./vendor/bin/robo project:setup`
-5. Run `./vendor/bin/robo project:install`
+2. Run `./vendor/bin/robo project:install` to install the project having the Search API Europa Search module enabled.
 
-Project will be available at `./build`.
+To have a complete list of building options run:
 
-## Tests
-
-Run Behat tests with `./vendor/bin/behat`.
+```
+$ ./vendor/bin/robo
+```
