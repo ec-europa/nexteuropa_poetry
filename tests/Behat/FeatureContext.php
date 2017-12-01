@@ -1,5 +1,7 @@
 <?php
 
+namespace Drupal\Tests\nexteuropa_poetry\Behat;
+
 use Drupal\DrupalExtension\Context\RawDrupalContext;
 
 /**

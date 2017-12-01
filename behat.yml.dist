@@ -1,6 +1,4 @@
 default:
-  autoload:
-    - '%paths.base%/tests/features/bootstrap'
   suites:
     default:
       paths:
@@ -9,8 +7,9 @@ default:
         - 'Drupal\DrupalExtension\Context\MinkContext'
         - 'Drupal\DrupalExtension\Context\DrupalContext'
         - 'EC\Behat\PoetryExtension\Context\PoetryContext'
-        - 'VariableContext'
-        - 'FeatureContext'
+        - 'Drupal\Tests\nexteuropa_poetry\Behat\VariableContext'
+        - 'Drupal\Tests\nexteuropa_poetry\Behat\FeatureContext'
+        - 'Drupal\Tests\nexteuropa_poetry\Behat\PoetryContext'
   extensions:
     Behat\MinkExtension:
       goutte: ~

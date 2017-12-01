@@ -13,7 +13,7 @@
   },
   "require-dev": {
     "ec-europa/oe-code-review": "^0.0.2",
-    "ec-europa/oe-poetry-behat": "~0.2",
+    "ec-europa/oe-poetry-behat": "~0.3",
     "phpunit/phpunit": "^5",
     "composer/installers": "^1.2",
     "cweagans/composer-patches": "^1.6",
@@ -33,6 +33,16 @@
       "url": "https://packages.drupal.org/7"
     }
   ],
+  "autoload": {
+    "psr-4": {
+      "Drupal\\nexteuropa_poetry\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Drupal\\Tests\\nexteuropa_poetry\\": "tests"
+    }
+  },
   "scripts": {
     "post-update-cmd": "./vendor/bin/robo project:setup",
     "post-install-cmd": "./vendor/bin/robo project:setup"
