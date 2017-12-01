@@ -1,8 +1,8 @@
 @api @poetry @watchdog
 Feature: Requests
 
-  # Following scenario fails only on Travis PHP 5.6 and 7.0 while locally works. @todo: Fix this.
-  @no-travis
+  # Following scenario fails only on Travis PHP 5.6 / 7.0 and Drone while locally works. @todo: Fix this.
+  @no-ci
   Scenario: Test request.
 
     Given Poetry will return the following XML response:

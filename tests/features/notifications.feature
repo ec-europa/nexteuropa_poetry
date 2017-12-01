@@ -1,8 +1,8 @@
 @api @poetry @watchdog
 Feature: Server notifications
 
-  # Following scenario fails only on Travis PHP 5.6 while locally works. @todo: Fix this.
-  @no-travis
+  # Following scenario fails only on Travis PHP 5.6 and Drone while locally works. @todo: Fix this.
+  @no-ci
   Scenario: Poetry server can notify the client using raw XML.
 
     Given I change the variable "nexteuropa_poetry_notification_username" to "foo"

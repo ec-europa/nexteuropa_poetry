@@ -19,7 +19,7 @@ before_script:
 
 script:
   - grumphp run
-  - behat --tags=~no-travis
+  - behat --tags=~no-ci
 
 notifications:
   email: false
