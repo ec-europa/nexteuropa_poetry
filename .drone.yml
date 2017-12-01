@@ -4,12 +4,12 @@ services:
 
 pipeline:
   install:
-    image: fpfis/php71-dev
+    image: fpfis/php56-dev
     commands:
       - composer self-update
       - composer install
   test:
-    image: fpfis/php71-dev
+    image: fpfis/php56-dev
     commands:
       - './vendor/bin/robo project:install -o "database.host: mysql"'
       - ./vendor/bin/drush --root=$PWD/build --debug runserver :8888 > ~/debug.txt 2>&1 &
