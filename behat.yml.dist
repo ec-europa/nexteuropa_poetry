@@ -24,8 +24,5 @@ default:
       application:
         base_url: !site.base_url
         endpoint: '/poetry/notification'
-      service:
-        host: 'localhost'
-        port: '4444'
   formatters:
     progress: ~
