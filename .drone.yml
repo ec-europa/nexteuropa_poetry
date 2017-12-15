@@ -4,7 +4,9 @@ services:
 
 pipeline:
   install:
-    image: fpfis/php56-dev
+    # Temporarily use php71 until PR InterNations/http-mock#42 is merged. @todo: fix this.
+    # image: fpfis/php56-dev
+    image: pfis/php71-dev
     commands:
       - composer self-update
       - composer install
