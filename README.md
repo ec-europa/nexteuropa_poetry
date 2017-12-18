@@ -23,3 +23,20 @@ To have a complete list of building options run:
 ```
 $ ./vendor/bin/robo
 ```
+
+## Configuration
+
+After installing the module a new administration page will be available in `admin/config/regional/poetry-client`.
+
+Set the following value for `Service WSDL` according to your environment:
+
+- Production: `http://intragate.ec.europa.eu/DGT/poetry_services/components/poetry.cfc?wsdl`
+- Testing: `http://intragate.test.ec.europa.eu/DGT/poetry_services/components/poetry.cfc?wsdl`
+
+## Usage
+
+The following code will give you a Poetry Client object:
+
+```php
+$poetry = nexteuropa_poetry_client();
+```
