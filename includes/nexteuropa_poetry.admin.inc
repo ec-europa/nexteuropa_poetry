@@ -34,6 +34,13 @@ function nexteuropa_poetry_client_settings_form() {
     '#default_value' => variable_get('nexteuropa_poetry_service_password', ''),
     '#description' => t('The Poetry client password, as provided by the Poetry remote service.'),
   );
+  $form['service']['nexteuropa_poetry_service_wsdl'] = array(
+    '#title' => t('Service WSDL'),
+    '#type' => 'textfield',
+    '#required' => TRUE,
+    '#default_value' => variable_get('nexteuropa_poetry_service_wsdl', ''),
+    '#description' => t('The Poetry client WSDL for the Poetry remote service.'),
+  );
 
   $form['notification'] = array(
     '#type' => 'fieldset',
