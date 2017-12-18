@@ -19,4 +19,4 @@ Feature: Settings
     And the "edit-nexteuropa-poetry-notification-password" field should contain "notification-password"
     And the "edit-nexteuropa-poetry-service-username" field should contain "service-username"
     And the "edit-nexteuropa-poetry-service-password" field should contain "service-password"
-    And the "edit-nexteuropa-poetry-service-wsdl" field should contain "service-wsdl2"
+    And the "edit-nexteuropa-poetry-service-wsdl" field should contain "service-wsdl"
