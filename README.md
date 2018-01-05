@@ -16,7 +16,7 @@ This will download all development dependencies and build a Drupal 7 target site
 After that:
 
 1. Copy `runner.yml.dist` into `runner.yml` and customise relevant parameters.
-2. Run `./vendor/bin/robo drupal:site-install` to install the project having the NextEuropa Poetry module enabled.
+2. Run `./vendor/bin/run drupal:site-install` to install the project having the NextEuropa Poetry module enabled.
 
 To have a complete list of building options run:
 
