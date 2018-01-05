@@ -1,7 +1,6 @@
 language: php
 php:
-  # Temporarily disabled on 5.6 until PR InterNations/http-mock#42 is merged. @todo: fix this.
-  # - 5.6
+  - 5.6
   - 7.0
 
 env:
