@@ -1,9 +1,12 @@
 @api @poetry @watchdog
 Feature: Requests
 
-  # Following scenario fails only on Travis PHP 5.6 / 7.0 and Drone while locally works. @todo: Fix this.
-  @no-ci
   Scenario: Test request.
+
+    Given I change the variable "nexteuropa_poetry_notification_username" to "foo"
+    And I change the variable "nexteuropa_poetry_notification_password" to "bar"
+    And I change the variable "nexteuropa_poetry_service_username" to "foo"
+    And I change the variable "nexteuropa_poetry_service_password" to "bar"
 
     Given Poetry will return the following XML response:
     """
@@ -51,10 +54,10 @@ Feature: Requests
 
     And Poetry service received request should contain the following XML portion:
     """
-    <retour type="webService" action="UPDATE">
-      <retourUser>notification-username</retourUser>
-      <retourPassword>notification-password</retourPassword>
-      <retourAddress>!poetry.client.wsdl</retourAddress>
-      <retourPath>handle</retourPath>
-    </retour>
+      <retour type="webService" action="UPDATE">
+        <retourUser><![CDATA[notification-username]]></retourUser>
+        <retourPassword><![CDATA[notification-password]]></retourPassword>
+        <retourAddress><![CDATA[!poetry.client.wsdl]]></retourAddress>
+        <retourPath><![CDATA[handle]]></retourPath>
+      </retour>
     """
