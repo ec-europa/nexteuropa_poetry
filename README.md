@@ -11,7 +11,7 @@ $ composer install
 ```
 
 This will download all development dependencies and build a Drupal 7 target site under `./build` and run
-`./vendor/bin/run drupal:component-scaffold` to setup proper symlink and produce necessary scaffolding files.
+`./vendor/bin/run drupal:site-setup` to setup proper symlink and produce necessary scaffolding files.
 
 After that:
 
