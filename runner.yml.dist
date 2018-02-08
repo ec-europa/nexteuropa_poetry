@@ -11,6 +11,15 @@ drupal:
   post_install:
     - "./vendor/bin/drush --root=$(pwd)/build en -y composer_autoloader nexteuropa_poetry nexteuropa_poetry_test"
     - "./vendor/bin/drush --root=$(pwd)/build dis -y overlay update"
+  drush:
+    options:
+      ignored-directories: "${drupal.root}"
+      uri: "${drupal.base_url}"
+  settings:
+    conf:
+      file_scan_ignore_directories:
+        - "vendor"
+        - "${drupal.root}"
 
 commands:
   drupal:site-setup:
